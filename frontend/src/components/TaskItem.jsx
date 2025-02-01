@@ -2,10 +2,12 @@ import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
 import "./TaskItem.scss";
 
-const TasksItem = ({ task }) => {
+const TasksItem = ({ task, fetchTasks }) => {
     const handleTaskDeletion = async (taskId) => {
         try {
             await axios.delete(`http://localhost:8000/tasks/${task._id}`);
+
+            await fetchTasks();
         } catch (error) {
             console.log("Algo deu errado");
         }
