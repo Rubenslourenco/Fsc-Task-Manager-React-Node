@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 
 import CustomInput from "./CustomInput";
-
+import CustomButton from "./CustomButton";
+import { FaPlus } from "react-icons/fa";
+import axios from "axios";
+// import { toast } from "react-toastify";
 import "./AddTask.scss";
 
-const AddTask = () => {
+const AddTask = ({ fetchTask }) => {
     const [task, setTask] = useState("");
 
     const onChange = (e) => {
         setTask(e.target.value);
     };
+
+    const handleTaskAddition = async () => {
+        await axios.post("http://localhost:8000/tasks", {
+            description: task,
+            isCompleted: false,
+        });
+        await fetchTask();
+    };
+
     return (
         <div className="add-task-container">
             <CustomInput
@@ -17,6 +29,9 @@ const AddTask = () => {
                 value={task}
                 onChange={onChange}
             />
+            <CustomButton onClick={handleTaskAddition}>
+                <FaPlus size={14} color=" #fffff" />
+            </CustomButton>
         </div>
     );
 };
