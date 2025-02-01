@@ -15,11 +15,17 @@ const AddTask = ({ fetchTask }) => {
     };
 
     const handleTaskAddition = async () => {
-        await axios.post("http://localhost:8000/tasks", {
-            description: task,
-            isCompleted: false,
-        });
-        await fetchTask();
+        try {
+            await axios.post("http://localhost:8000/tasks", {
+                description: task,
+                isCompleted: false,
+            });
+            await fetchTask();
+
+            setTask("");
+        } catch (error) {
+            console.log("Algo deu errado");
+        }
     };
 
     return (
