@@ -29,7 +29,7 @@ const Tasks = () => {
             <div className="last-tasks">
                 <h3>Ultimas Tarefas</h3>
                 <AddTask fetchTask={fetchTasks} />
-                <div className="taks-list">
+                <div className="tasks-list">
                     {tasks
                         .filter((task) => task.isCompleted === false)
                         .map((lastTask) => (
