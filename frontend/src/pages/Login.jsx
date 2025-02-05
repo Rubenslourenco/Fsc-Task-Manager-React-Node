@@ -5,10 +5,10 @@ import logo from "../assets/images/logo.png";
 
 const login = () => {
     return (
-        <div>
+        <div className="login-container">
             <img src={logo} alt="Full Stack Club" />
             <div className="button-container">
-                <CustomButton>Entrar</CustomButton>Custom
+                <CustomButton>Entrar</CustomButton>
             </div>
         </div>
     );
